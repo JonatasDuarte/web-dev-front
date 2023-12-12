@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Concursos - Sistema de Apostas</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>Sistema de Apostas</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="apostadores.html">Apostadores</a></li>
+                <li><a href="apostas.html">Apostas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Seção: Criar Concurso -->
+        <section>
+            <h2>Criar Concurso</h2>
+
+            <form id="formCriarConcurso">
+                <label for="nomeConcurso">Nome:</label>
+                <input type="text" id="nomeConcurso" name="nomeConcurso" required>
+
+                <label for="dataSorteio">Data do Sorteio:</label>
+                <input type="date" id="dataSorteio" name="dataSorteio" required>
+
+                <button type="button" onclick="criarConcurso()">Criar Concurso</button>
+            </form>
+        </section>
+
+        <!-- Seção: Cancelar Concurso -->
+        <section>
+            <h2>Cancelar Concurso</h2>
+
+            <form id="formCancelarConcurso">
+                <label for="idCancelarConcurso">ID do Concurso:</label>
+                <input type="number" id="idCancelarConcurso" name="idCancelarConcurso" required>
+
+                <button type="button" onclick="cancelarConcurso()">Cancelar Concurso</button>
+            </form>
+        </section>
+
+        <!-- Seção: Listar Concursos -->
+        <section>
+            <h2>Listagem de Concursos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Data do Sorteio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Preencher com dados dinâmicos ao listar os concursos -->
+                    <tr>
+                        <td>1</td>
+                        <td>Concurso A</td>
+                        <td>2023-12-31</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Concurso B</td>
+                        <td>2023-11-30</td>
+                    </tr>
+                    <!-- Repetir para outros concursos -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção: Sortear Vencedor -->
+        <section>
+            <h2>Sortear Vencedor</h2>
+
+            <form id="formSortearVencedor">
+                <label for="idSortearVencedor">ID do Concurso:</label>
+                <input type="number" id="idSortearVencedor" name="idSortearVencedor" required>
+
+                <button type="button" onclick="sortearVencedor()">Sortear Vencedor</button>
+                <p id="resultadoSorteio"></p>
+            </form>
+        </section>
+
+    </main>
+    <footer>
+        <p>&copy; 2023 Sistema de Apostas</p>
+    </footer>
+
+    <script>
+        function criarConcurso() {
+        }
+
+        function cancelarConcurso() {
+        }
+
+        function sortearVencedor() {
+        const idConcurso = document.getElementById('idSortearVencedor').value;
+
+        // Gera um número aleatório entre 1 e 100
+        const numeroSorteado = Math.floor(Math.random() * 100) + 1;
+
+        // Exibe o resultado
+        const resultadoSorteioElement = document.getElementById('resultadoSorteio');
+        resultadoSorteioElement.textContent = `ID do Concurso: ${idConcurso}, Número Sorteado: ${numeroSorteado}`;
+    }
+
+    </script>
+</body>
+</html>

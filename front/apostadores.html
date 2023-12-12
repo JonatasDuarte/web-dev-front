@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Apostadores - Sistema de Apostas</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h2>Sistema de Apostas</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="concursos.html">Concursos</a></li>
+                <li><a href="apostas.html">Apostas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Seção: Criação de Apostador -->
+        <section>
+            <h2>Criar Apostador</h2>
+
+            <form id="formCriarApostador">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="button" onclick="criarApostador()">Criar Apostador</button>
+            </form>
+        </section>
+
+        <!-- Seção: Listagem de Apostadores -->
+        <section>
+            <h2>Listagem de Apostadores</h2>
+
+            <button type="button" onclick="listarApostadores()">Listar Apostadores</button>
+
+            <table id="tabelaApostadores">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Preencher com dados dinâmicos ao listar os apostadores -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção: Edição e Exclusão de Apostador -->
+        <section>
+            <h2>Edição e Exclusão de Apostador</h2>
+
+            <form action="/editar-apostador/1" method="post">
+                <label for="id_editar">ID do Apostador:</label>
+                <input type="number" id="id_editar" name="id_editar" required>
+
+                <label for="nome_editar">Nome:</label>
+                <input type="text" id="nome_editar" name="nome_editar" required>
+
+                <label for="email_editar">Email:</label>
+                <input type="email" id="email_editar" name="email_editar" required>
+
+                <button type="button" onclick="editarApostadorConfirmacao()">Salvar Alterações</button>
+                <button type="button" onclick="deletarApostadorConfirmacao()">Deletar Apostador</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Sistema de Apostas</p>
+    </footer>
+
+    <script>
+        function criarApostador() {
+            // Obtém os dados do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+
+            const novoApostador = {
+                nome: nome,
+                email: email,
+            };
+
+            // Envia a requisição para criar o novo apostador
+            fetch('http://18.231.191.170:8080/apostador', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(novoApostador),
+            })
+            .then(response => response.json())
+            .then(apostadorCriado => {
+                console.log('Apostador criado com sucesso:', apostadorCriado);
+                mostrarSecao('listar');
+            })
+            .catch(error => console.error('Erro ao criar apostador:', error));
+        }
+
+        function listarApostadores() {
+            fetch('http://18.231.191.170:8080/apostador', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => alert(JSON.stringify(data)))
+                    .catch(error => console.error('Erro:', error));
+
+        }
+
+        function editarApostador(id) {
+        }
+
+        function editarApostadorConfirmacao() {
+        }
+
+        function deletarApostador(id) {
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Apostas - Sistema de Apostas</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Sistema de Apostas</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="apostadores.html">Apostador</a></li>
+                <li><a href="concursos.html">Concursos</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Seção: Criar Aposta -->
+        <section id="criar-aposta">
+            <h2>Criar Aposta</h2>
+
+            <form action="/criar-aposta" method="post">
+                <label for="apostador">Apostador:</label>
+                <select id="apostador" name="apostador" required>
+                    <option value="1">Apostador 1</option>
+                    <option value="2">Apostador 2</option>
+                </select>
+
+                <label for="concurso">Concurso:</label>
+                <select id="concurso" name="concurso" required>
+                    <option value="1">Concurso 1</option>
+                    <option value="2">Concurso 2</option>
+
+                </select>
+
+                <label for="numeroAposta">Número da Aposta:</label>
+                <input type="number" id="numeroAposta" name="numeroAposta" required>
+
+                <button type="button" onclick="criarAposta()">Criar Aposta</button>
+            </form>
+        </section>
+
+        <!-- Seção: Listar Apostas -->
+        <section id="listar-apostas">
+            <h2>Apostas</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Apostador</th>
+                        <th>Concurso</th>
+                        <th>Número da Aposta</th>
+                        <th>Status da Aposta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Apostador 1</td>
+                        <td>Concurso 1</td>
+                        <td>123</td>
+                        <td>EM_ABERTO</td>
+                    </tr>
+                    <!-- Repetir para outras apostas -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Sistema de Apostas</p>
+    </footer>
+
+    <script>
+        function criarAposta() {
+            const apostadorSelecionado = document.getElementById('apostador').value;
+            const concursoSelecionado = document.getElementById('concurso').value;
+            const numeroAposta = document.getElementById('numeroAposta').value;
+
+            alert('Aposta criada com sucesso!');
+            listarApostas();
+        }
+
+        // Função para listar as apostas
+        function listarApostas() {
+            const tabelaApostas = document.querySelector('#listar-apostas tbody');
+            tabelaApostas.innerHTML = '';
+
+            // Simulação de dados
+            const apostas = [
+                { id: 1, apostador: 'Apostador 1', concurso: 'Concurso 1', numeroAposta: 123, status: 'EM_ABERTO' },
+            ];
+
+            apostas.forEach(aposta => {
+                const novaLinha = document.createElement('tr');
+                novaLinha.innerHTML = `
+                    <td>${aposta.id}</td>
+                    <td>${aposta.apostador}</td>
+                    <td>${aposta.concurso}</td>
+                    <td>${aposta.numeroAposta}</td>
+                    <td>${aposta.status}</td>
+                `;
+                tabelaApostas.appendChild(novaLinha);
+            });
+        }
+
+        // Mostrar a seção de listar apostas por padrão
+        listarApostas();
+    </script>
+</body>
+</html>
