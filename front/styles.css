@@ -28,6 +28,14 @@
     height: auto;
 }
 
+.justified-box {
+    width: 500px; /* Ajuste conforme necessário */
+    margin: 0 auto; /* Centraliza a caixa na horizontal */
+    text-align: justify;
+    padding: 10px; /* Adiciona um pouco de espaço interno */
+}
+
+
 /* ...... */
 body {
     font-family: Arial, sans-serif;
@@ -76,5 +84,67 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+table {
+    width: 80%;    
+    margin: auto;
+    border: 1px solid black;
+}
+
+table th, td {
+    border: 1px solid black;
+}
+
+table tr {
+  border-bottom: 1px solid #ddd;
+} 
+
+table tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+table th {
+    text-align: left;
+}
+
+.apostadoresMain {
+    display: flex;
+    flex-direction: column;
+}
+.apostadoresMain section {
+    width: 100%;
+}
+
+.apostadoresMain section + section {
+    margin-top: 2rem;
+}
+
+.concursoMain {
+    display: flex;
+    flex-direction: column;
+}
+
+.concursoMain section {
+    width: 100%;
+}
+
+.concursoMain section + section {
+    margin-top: 2rem;
+}
+
+
+.apostaMain {
+    display: flex;
+    flex-direction: column;
+}
+
+.apostaMain section {
+    width: 100%;
+}
+
+.apostaMain section + section {
+    margin-top: 2rem;
+}
+
 
 

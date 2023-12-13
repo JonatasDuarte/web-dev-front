@@ -12,28 +12,25 @@
             <h1>Sistema de Apostas</h1>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="apostadores.html">Apostador</a></li>
-                <li><a href="concursos.html">Concursos</a></li>
                 <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="apostadores.html">Apostadores</a></li>
+                <li><a href="concursos.html">Concursos</a></li>
+                <li><a href="apostas.html">Apostas</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="apostaMain">
         <!-- Seção: Criar Aposta -->
         <section id="criar-aposta">
-            <h2>Criar Aposta</h2>
-
+            <h3>Criar Aposta</h3>
             <form action="/criar-aposta" method="post">
                 <label for="apostador">Apostador:</label>
                 <select id="apostador" name="apostador" required>
-                    <option value="1">Apostador 1</option>
-                    <option value="2">Apostador 2</option>
+                    
                 </select>
 
                 <label for="concurso">Concurso:</label>
                 <select id="concurso" name="concurso" required>
-                    <option value="1">Concurso 1</option>
-                    <option value="2">Concurso 2</option>
 
                 </select>
 
@@ -46,9 +43,9 @@
 
         <!-- Seção: Listar Apostas -->
         <section id="listar-apostas">
-            <h2>Apostas</h2>
+            <h3>Listagem de Apostas</h3>
 
-            <table>
+            <table id="tableApostas">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -74,42 +71,10 @@
     <footer>
         <p>&copy; 2023 Sistema de Apostas</p>
     </footer>
-
+    <script src="src/index.js"></script>
     <script>
-        function criarAposta() {
-            const apostadorSelecionado = document.getElementById('apostador').value;
-            const concursoSelecionado = document.getElementById('concurso').value;
-            const numeroAposta = document.getElementById('numeroAposta').value;
-
-            alert('Aposta criada com sucesso!');
-            listarApostas();
-        }
-
-        // Função para listar as apostas
-        function listarApostas() {
-            const tabelaApostas = document.querySelector('#listar-apostas tbody');
-            tabelaApostas.innerHTML = '';
-
-            // Simulação de dados
-            const apostas = [
-                { id: 1, apostador: 'Apostador 1', concurso: 'Concurso 1', numeroAposta: 123, status: 'EM_ABERTO' },
-            ];
-
-            apostas.forEach(aposta => {
-                const novaLinha = document.createElement('tr');
-                novaLinha.innerHTML = `
-                    <td>${aposta.id}</td>
-                    <td>${aposta.apostador}</td>
-                    <td>${aposta.concurso}</td>
-                    <td>${aposta.numeroAposta}</td>
-                    <td>${aposta.status}</td>
-                `;
-                tabelaApostas.appendChild(novaLinha);
-            });
-        }
-
-        // Mostrar a seção de listar apostas por padrão
-        listarApostas();
+        listarApostas()
+        preencherSelectorsAposta()
     </script>
 </body>
 </html>
